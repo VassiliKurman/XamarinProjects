@@ -3,7 +3,7 @@ using AndroidX.Room;
 
 namespace RoomExample
 {
-    [Database(Entities = new Java.Lang.Class[0], ExportSchema = false, Version = 1)]
+    [Database(Entities = new Java.Lang.Class[] { Java.Lang.Class.FromType(typeof(Note))}, ExportSchema = false, Version = 1)]
     public abstract class NoteDatabase : RoomDatabase
     {
         private static readonly object LOCK = new object();
