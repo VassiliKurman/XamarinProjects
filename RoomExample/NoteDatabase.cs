@@ -1,9 +1,10 @@
 ﻿using Android.Content;
 using AndroidX.Room;
+using Java.Lang;
 
 namespace RoomExample
 {
-    [Database(Entities = new Java.Lang.Class[] { Java.Lang.Class.FromType(typeof(Note))}, ExportSchema = false, Version = 1)]
+    [Database(Version = 1, Entities = new Class[] { Class.FromType(typeof(Note))}, ExportSchema = false)]
     public abstract class NoteDatabase : RoomDatabase
     {
         private static readonly object LOCK = new object();
@@ -17,7 +18,7 @@ namespace RoomExample
                 lock (LOCK)
                 {
                     sInstance = (NoteDatabase)Room.DatabaseBuilder(context.ApplicationContext,
-                            Java.Lang.Class.FromType(typeof(NoteDatabase)),
+                            Class.FromType(typeof(NoteDatabase)),
                             DATABASE_NAME)
                         .Build();
                 }
