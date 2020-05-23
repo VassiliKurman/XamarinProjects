@@ -8,13 +8,11 @@ namespace RoomExample
 {
     public class NoteAdapter : RecyclerView.Adapter
     {
-        Context context;
-        IItemClickListener listener;
+        private readonly IItemClickListener listener;
         List<Note> notes;
 
         public NoteAdapter(Context context, IItemClickListener listener)
         {
-            this.context = context;
             this.listener = listener;
             notes = new List<Note>();
         }
@@ -29,10 +27,9 @@ namespace RoomExample
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             NoteAdapterViewHolder vh = holder as NoteAdapterViewHolder;
-            // Setting icon daily availability
 
             vh.NoteText.Text = notes[position].Text;
-
+            vh.NoteDate.Text = notes[position].Timestamp;
         }
 
         public override int ItemCount

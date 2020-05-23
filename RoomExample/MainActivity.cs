@@ -15,12 +15,12 @@ namespace RoomExample
     public class MainActivity : AppCompatActivity,
         IItemClickListener
     {
-        EditText text;
-        Button button;
-        RecyclerView recyclerView;
-        RecyclerView.LayoutManager layoutManager;
-        NoteAdapter adapter;
-        List<Note> notes = new List<Note>();
+        private EditText text;
+        private Button button;
+        private RecyclerView recyclerView;
+        private RecyclerView.LayoutManager layoutManager;
+        private NoteAdapter adapter;
+        private readonly List<Note> notes = new List<Note>();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -52,7 +52,7 @@ namespace RoomExample
             {
                 notes.Add(new Note {
                     Text = text.Text,
-                    Timestamp = DateTime.Now
+                    Timestamp = DateTime.Now.ToString()
                 });
                 // Empty entry
                 text.Text = string.Empty;

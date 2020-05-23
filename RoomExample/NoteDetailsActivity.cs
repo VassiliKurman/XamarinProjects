@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace RoomExample
 {
-    [Activity(Label = "NoteDetailsActivity")]
-    public class NoteDetailsActivity : Activity
+    [Activity(Label = "Note Details", Theme = "@style/AppTheme", ParentActivity = typeof(MainActivity))]
+    public class NoteDetailsActivity : AppCompatActivity
     {
         private Note note;
         private TextView text;
@@ -19,13 +19,16 @@ namespace RoomExample
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_note_details);
 
-            ActionBar.SetDisplayHomeAsUpEnabled(true);
+            if(SupportActionBar != null)
+            {
+                SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            }
 
             text = FindViewById<TextView>(Resource.Id.noteDetailsText);
             date = FindViewById<TextView>(Resource.Id.noteDetailsDate);
 
             // Create your application here
-            int noteId = Intent.GetIntExtra("noteId", -1);
+            var noteId = Intent.GetLongExtra("noteId", -1);
 
             if(noteId == -1)
             {

@@ -1,11 +1,16 @@
-﻿using System;
+﻿using AndroidX.Room;
 
 namespace RoomExample
 {
+    [Entity(TableName ="notes")]
     public class Note
     {
-        public int Id { get; set; }
+        [PrimaryKey(AutoGenerate = true)]
+        [ColumnInfo(Name = "id")]
+        public long Id { get; set; }
+        [ColumnInfo(Name = "text")]
         public string Text { get; set; }
-        public DateTime Timestamp { get; set; }
+        [ColumnInfo(Name = "timestamp")]
+        public string Timestamp { get; set; }
     }
 }

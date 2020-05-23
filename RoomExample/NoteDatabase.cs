@@ -4,7 +4,7 @@ using Java.Lang;
 
 namespace RoomExample
 {
-    [Database(Version = 1, Entities = new Class[] { Class.FromType(typeof(Note))}, ExportSchema = false)]
+    [Database(Version = 1, Entities = new Class[] { Class.FromType(typeof(Note)) }, ExportSchema = false)]
     public abstract class NoteDatabase : RoomDatabase
     {
         private static readonly object LOCK = new object();
